@@ -1,0 +1,347 @@
+I Ensure build layout
+I Check configuration tokens
+I Preparing build
+I Check requirements for android
+D Search for Git (git)
+D  -> found at /usr/bin/git
+D Search for Cython (cython)
+D  -> found at /workspace/bzenv/bin/cython
+D Search for Java compiler (javac)
+D  -> found at /usr/bin/javac
+D Search for Java keytool (keytool)
+D  -> found at /usr/bin/keytool
+I Install platform
+D Run '/workspace/bzenv/bin/python3 -m pip install -q appdirs colorama>=0.3.3 jinja2 sh>=2, <3.0; sys_platform!="win32" meson ninja build toml packaging setuptools wheel>=0.43,<0.49' ...
+D Cwd None
+I Apache ANT found at /home/box/.buildozer/android/platform/apache-ant-1.9.4
+I Android SDK found at /home/box/.buildozer/android/platform/android-sdk
+I Recommended android's NDK version by p4a is: 28c
+I Android NDK found at /home/box/.buildozer/android/platform/android-ndk-r28c
+D Run '/workspace/bzenv/bin/python3 -m pythonforandroid.toolchain aab -h --color=never --storage-dir=/workspace/radar-pi/android/.buildozer/android/platform/build-arm64-v8a --ndk-api=26 --ignore-setup-py --debug' ...
+D Cwd /workspace/p4a-src
+I Check application requirements
+I Compile platform
+D Run '/workspace/bzenv/bin/python3 -m pythonforandroid.toolchain create --dist_name=radarpi --bootstrap=sdl2 --requirements=python3==3.11.9,hostpython3==3.11.9,pygame,numpy,pyjnius,android,sqlite3 --arch=arm64-v8a --copy-libs --local-recipes /workspace/radar-pi/android/recipes --color=never --storage-dir=/workspace/radar-pi/android/.buildozer/android/platform/build-arm64-v8a --ndk-api=26 --ignore-setup-py --debug' ...
+D Cwd /workspace/p4a-src
+[WARNING]: prerequisites.py is experimental and does not support all prerequisites yet.
+[WARNING]: Please report any issues to the python-for-android issue tracker.
+[WARNING]: prerequisites.py is experimental and does not support all prerequisites yet.
+[WARNING]: Please report any issues to the python-for-android issue tracker.
+[INFO]:    Recipe python3: version "3.11.9" requested
+[INFO]:    Recipe hostpython3: version "3.11.9" requested
+[INFO]:    Will compile for the following archs: arm64-v8a
+[INFO]:    Found Android API target in $ANDROIDAPI: 33
+[INFO]:    Available Android APIs are (33)
+[INFO]:    Requested API target 33 is available, continuing.
+[INFO]:    Found NDK dir in $ANDROIDNDK: /home/box/.buildozer/android/platform/android-ndk-r28c
+[INFO]:    Found NDK version 28c
+[WARNING]: Maximum recommended NDK version is 28c, but newer versions may work.
+[WARNING]: Newer NDKs may not be fully supported by p4a.
+[INFO]:    Getting NDK API version (i.e. minimum supported API) from user argument
+[DEBUG]:   All possible dists: [<Distribution: name radarpiok with recipes (hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, numpy, pyjnius, setuptools, android, pygame)>, <Distribution: name radarpi with recipes (hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, numpy, pyjnius, setuptools, android, pygame)>]
+[DEBUG]:   Dist matching name and arch: [<Distribution: name radarpi with recipes (hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, numpy, pyjnius, setuptools, android, pygame)>]
+[DEBUG]:   Dist matching ndk_api and recipe: [<Distribution: name radarpi with recipes (hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, numpy, pyjnius, setuptools, android, pygame)>]
+[INFO]:    Of the existing distributions, the following meet the given requirements:
+[INFO]:    	radarpi: min API 26, includes recipes (hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, numpy, pyjnius, setuptools, android, pygame), built for archs (arm64-v8a)
+[INFO]:    radarpi has compatible recipes, using this one
+I Build the application #7
+D Copy application source from /workspace/radar-pi/android/app
+D Remove directory and subdirectory /workspace/radar-pi/android/.buildozer/android/app
+D Create directory /workspace/radar-pi/android/.buildozer/android/app
+D Copy /workspace/radar-pi/android/app/main.py to /workspace/radar-pi/android/.buildozer/android/app/main.py
+D Create directory /workspace/radar-pi/android/.buildozer/android/app/data
+D Copy /workspace/radar-pi/android/app/data/radares.sqlite to /workspace/radar-pi/android/.buildozer/android/app/data/radares.sqlite
+D Create directory /workspace/radar-pi/android/.buildozer/android/app/data/sim
+D Copy /workspace/radar-pi/android/app/data/sim/paulista.json to /workspace/radar-pi/android/.buildozer/android/app/data/sim/paulista.json
+D Copy /workspace/radar-pi/android/app/data/sim/radial_leste.json to /workspace/radar-pi/android/.buildozer/android/app/data/sim/radial_leste.json
+D Copy /workspace/radar-pi/android/app/data/sim/br116_dnit.json to /workspace/radar-pi/android/.buildozer/android/app/data/sim/br116_dnit.json
+D Copy /workspace/radar-pi/android/app/data/sim/cet_acima.json to /workspace/radar-pi/android/.buildozer/android/app/data/sim/cet_acima.json
+D Copy /workspace/radar-pi/android/app/data/sim/tamoios_piper.json to /workspace/radar-pi/android/.buildozer/android/app/data/sim/tamoios_piper.json
+D Copy /workspace/radar-pi/android/app/data/sim/sem_radar.json to /workspace/radar-pi/android/.buildozer/android/app/data/sim/sem_radar.json
+D Copy /workspace/radar-pi/android/app/data/sim/marginal.json to /workspace/radar-pi/android/.buildozer/android/app/data/sim/marginal.json
+D Copy /workspace/radar-pi/android/app/data/sim/ordem.json to /workspace/radar-pi/android/.buildozer/android/app/data/sim/ordem.json
+D Copy /workspace/radar-pi/android/app/data/sim/br116_sul.json to /workspace/radar-pi/android/.buildozer/android/app/data/sim/br116_sul.json
+D Create directory /workspace/radar-pi/android/.buildozer/android/app/data/osm
+D Copy /workspace/radar-pi/android/app/data/osm/malha_sp.sqlite to /workspace/radar-pi/android/.buildozer/android/app/data/osm/malha_sp.sqlite
+D Create directory /workspace/radar-pi/android/.buildozer/android/app/data/voz
+D Copy /workspace/radar-pi/android/app/data/voz/f03.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f03.wav
+D Copy /workspace/radar-pi/android/app/data/voz/f22.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f22.wav
+D Copy /workspace/radar-pi/android/app/data/voz/f15.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f15.wav
+D Copy /workspace/radar-pi/android/app/data/voz/f08.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f08.wav
+D Copy /workspace/radar-pi/android/app/data/voz/f06.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f06.wav
+D Copy /workspace/radar-pi/android/app/data/voz/f19.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f19.wav
+D Copy /workspace/radar-pi/android/app/data/voz/indice.json to /workspace/radar-pi/android/.buildozer/android/app/data/voz/indice.json
+D Copy /workspace/radar-pi/android/app/data/voz/f13.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f13.wav
+D Copy /workspace/radar-pi/android/app/data/voz/f18.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f18.wav
+D Copy /workspace/radar-pi/android/app/data/voz/f07.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f07.wav
+D Copy /workspace/radar-pi/android/app/data/voz/f16.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f16.wav
+D Copy /workspace/radar-pi/android/app/data/voz/f21.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f21.wav
+D Copy /workspace/radar-pi/android/app/data/voz/f20.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f20.wav
+D Copy /workspace/radar-pi/android/app/data/voz/f17.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f17.wav
+D Copy /workspace/radar-pi/android/app/data/voz/f09.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f09.wav
+D Copy /workspace/radar-pi/android/app/data/voz/f02.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f02.wav
+D Copy /workspace/radar-pi/android/app/data/voz/f00.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f00.wav
+D Copy /workspace/radar-pi/android/app/data/voz/f05.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f05.wav
+D Copy /workspace/radar-pi/android/app/data/voz/f12.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f12.wav
+D Copy /workspace/radar-pi/android/app/data/voz/f14.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f14.wav
+D Copy /workspace/radar-pi/android/app/data/voz/f01.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f01.wav
+D Copy /workspace/radar-pi/android/app/data/voz/f04.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f04.wav
+D Copy /workspace/radar-pi/android/app/data/voz/f10.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f10.wav
+D Copy /workspace/radar-pi/android/app/data/voz/f11.wav to /workspace/radar-pi/android/.buildozer/android/app/data/voz/f11.wav
+D Create directory /workspace/radar-pi/android/.buildozer/android/app/compat/h3
+D Copy /workspace/radar-pi/android/app/compat/h3/__init__.py to /workspace/radar-pi/android/.buildozer/android/app/compat/h3/__init__.py
+D Create directory /workspace/radar-pi/android/.buildozer/android/app/compat/pyproj
+D Copy /workspace/radar-pi/android/app/compat/pyproj/__init__.py to /workspace/radar-pi/android/.buildozer/android/app/compat/pyproj/__init__.py
+D Create directory /workspace/radar-pi/android/.buildozer/android/app/compat/shapely
+D Copy /workspace/radar-pi/android/app/compat/shapely/strtree.py to /workspace/radar-pi/android/.buildozer/android/app/compat/shapely/strtree.py
+D Copy /workspace/radar-pi/android/app/compat/shapely/geometry.py to /workspace/radar-pi/android/.buildozer/android/app/compat/shapely/geometry.py
+D Copy /workspace/radar-pi/android/app/compat/shapely/ops.py to /workspace/radar-pi/android/.buildozer/android/app/compat/shapely/ops.py
+D Copy /workspace/radar-pi/android/app/compat/shapely/__init__.py to /workspace/radar-pi/android/.buildozer/android/app/compat/shapely/__init__.py
+D Create directory /workspace/radar-pi/android/.buildozer/android/app/radar_pi
+D Copy /workspace/radar-pi/android/app/radar_pi/__init__.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/__init__.py
+D Copy /workspace/radar-pi/android/app/radar_pi/config.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/config.py
+D Create directory /workspace/radar-pi/android/.buildozer/android/app/radar_pi/alerta
+D Copy /workspace/radar-pi/android/app/radar_pi/alerta/motor.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/alerta/motor.py
+D Copy /workspace/radar-pi/android/app/radar_pi/alerta/__init__.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/alerta/__init__.py
+D Create directory /workspace/radar-pi/android/.buildozer/android/app/radar_pi/telemetria
+D Copy /workspace/radar-pi/android/app/radar_pi/telemetria/agregador.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/telemetria/agregador.py
+D Copy /workspace/radar-pi/android/app/radar_pi/telemetria/__init__.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/telemetria/__init__.py
+D Create directory /workspace/radar-pi/android/.buildozer/android/app/radar_pi/ui
+D Copy /workspace/radar-pi/android/app/radar_pi/ui/tela.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/ui/tela.py
+D Copy /workspace/radar-pi/android/app/radar_pi/ui/__init__.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/ui/__init__.py
+D Create directory /workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa
+D Copy /workspace/radar-pi/android/app/radar_pi/mapa/gazetteer.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa/gazetteer.py
+D Copy /workspace/radar-pi/android/app/radar_pi/mapa/vinculo.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa/vinculo.py
+D Copy /workspace/radar-pi/android/app/radar_pi/mapa/tiles.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa/tiles.py
+D Copy /workspace/radar-pi/android/app/radar_pi/mapa/__init__.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa/__init__.py
+D Copy /workspace/radar-pi/android/app/radar_pi/mapa/grafo.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa/grafo.py
+D Create directory /workspace/radar-pi/android/.buildozer/android/app/radar_pi/dados
+D Copy /workspace/radar-pi/android/app/radar_pi/dados/db.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/dados/db.py
+D Copy /workspace/radar-pi/android/app/radar_pi/dados/__init__.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/dados/__init__.py
+D Create directory /workspace/radar-pi/android/.buildozer/android/app/radar_pi/coletor
+D Copy /workspace/radar-pi/android/app/radar_pi/coletor/fontes.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/coletor/fontes.py
+D Copy /workspace/radar-pi/android/app/radar_pi/coletor/pipeline.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/coletor/pipeline.py
+D Copy /workspace/radar-pi/android/app/radar_pi/coletor/util.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/coletor/util.py
+D Copy /workspace/radar-pi/android/app/radar_pi/coletor/base.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/coletor/base.py
+D Copy /workspace/radar-pi/android/app/radar_pi/coletor/__init__.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/coletor/__init__.py
+D Create directory /workspace/radar-pi/android/.buildozer/android/app/radar_pi/sim
+D Copy /workspace/radar-pi/android/app/radar_pi/sim/sintetico.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/sim/sintetico.py
+D Copy /workspace/radar-pi/android/app/radar_pi/sim/__init__.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/sim/__init__.py
+D Copy /workspace/radar-pi/android/app/radar_pi/sim/rotas.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/sim/rotas.py
+D Copy /workspace/radar-pi/android/app/radar_pi/sim/executor.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/sim/executor.py
+D Create directory /workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa_ui
+D Copy /workspace/radar-pi/android/app/radar_pi/mapa_ui/navegador.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa_ui/navegador.py
+D Copy /workspace/radar-pi/android/app/radar_pi/mapa_ui/app.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa_ui/app.py
+D Copy /workspace/radar-pi/android/app/radar_pi/mapa_ui/render.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa_ui/render.py
+D Copy /workspace/radar-pi/android/app/radar_pi/mapa_ui/cenarios.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa_ui/cenarios.py
+D Copy /workspace/radar-pi/android/app/radar_pi/mapa_ui/base.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa_ui/base.py
+D Copy /workspace/radar-pi/android/app/radar_pi/mapa_ui/gps.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa_ui/gps.py
+D Copy /workspace/radar-pi/android/app/radar_pi/mapa_ui/__init__.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa_ui/__init__.py
+D Create directory /workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapmatch
+D Copy /workspace/radar-pi/android/app/radar_pi/mapmatch/hmm.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapmatch/hmm.py
+D Copy /workspace/radar-pi/android/app/radar_pi/mapmatch/__init__.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapmatch/__init__.py
+D Create directory /workspace/radar-pi/android/.buildozer/android/app/radar_pi/validacao
+D Copy /workspace/radar-pi/android/app/radar_pi/validacao/osm.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/validacao/osm.py
+D Copy /workspace/radar-pi/android/app/radar_pi/validacao/status.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/validacao/status.py
+D Copy /workspace/radar-pi/android/app/radar_pi/validacao/uf.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/validacao/uf.py
+D Copy /workspace/radar-pi/android/app/radar_pi/validacao/__init__.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/validacao/__init__.py
+D Create directory /workspace/radar-pi/android/.buildozer/android/app/radar_pi/voz
+D Copy /workspace/radar-pi/android/app/radar_pi/voz/tts.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/voz/tts.py
+D Copy /workspace/radar-pi/android/app/radar_pi/voz/__init__.py to /workspace/radar-pi/android/.buildozer/android/app/radar_pi/voz/__init__.py
+D Create directory /workspace/radar-pi/android/.buildozer/android/app/android_rt
+D Copy /workspace/radar-pi/android/app/android_rt/voz_android.py to /workspace/radar-pi/android/.buildozer/android/app/android_rt/voz_android.py
+D Copy /workspace/radar-pi/android/app/android_rt/diag.py to /workspace/radar-pi/android/.buildozer/android/app/android_rt/diag.py
+D Copy /workspace/radar-pi/android/app/android_rt/__init__.py to /workspace/radar-pi/android/.buildozer/android/app/android_rt/__init__.py
+D Copy /workspace/radar-pi/android/app/android_rt/plataforma.py to /workspace/radar-pi/android/.buildozer/android/app/android_rt/plataforma.py
+D Create directory /workspace/radar-pi/android/.buildozer/android/app/fonts
+D Copy /workspace/radar-pi/android/app/fonts/DejaVuSans-Bold.ttf to /workspace/radar-pi/android/.buildozer/android/app/fonts/DejaVuSans-Bold.ttf
+D Copy /workspace/radar-pi/android/app/fonts/DejaVuSans.ttf to /workspace/radar-pi/android/.buildozer/android/app/fonts/DejaVuSans.ttf
+D copy /workspace/radar-pi/android/.buildozer/applibs to /workspace/radar-pi/android/.buildozer/android/app/_applibs
+D Copy /workspace/bzenv/lib/python3.13/site-packages/buildozer/sitecustomize.py to /workspace/radar-pi/android/.buildozer/android/app/sitecustomize.py
+I Package the application
+D project.properties updated
+D Run '/workspace/bzenv/bin/python3 -m pythonforandroid.toolchain apk --bootstrap sdl2 --dist_name radarpi --name radar-pi --version 0.2.0 --package org.radarpi.radarpi --minsdk 26 --ndk-api 26 --private /workspace/radar-pi/android/.buildozer/android/app --permission ACCESS_FINE_LOCATION --permission ACCESS_COARSE_LOCATION --permission WAKE_LOCK --android-entrypoint org.kivy.android.PythonActivity --android-apptheme @android:style/Theme.NoTitleBar --orientation landscape --wakelock --enable-androidx --copy-libs --local-recipes /workspace/radar-pi/android/recipes --arch arm64-v8a --color=never --storage-dir=/workspace/radar-pi/android/.buildozer/android/platform/build-arm64-v8a --ndk-api=26 --ignore-setup-py --debug' ...
+D Cwd /workspace/p4a-src
+[WARNING]: prerequisites.py is experimental and does not support all prerequisites yet.
+[WARNING]: Please report any issues to the python-for-android issue tracker.
+[WARNING]: prerequisites.py is experimental and does not support all prerequisites yet.
+[WARNING]: Please report any issues to the python-for-android issue tracker.
+[INFO]:    Will compile for the following archs: arm64-v8a
+[INFO]:    Found Android API target in $ANDROIDAPI: 33
+[INFO]:    Available Android APIs are (33)
+[INFO]:    Requested API target 33 is available, continuing.
+[INFO]:    Found NDK dir in $ANDROIDNDK: /home/box/.buildozer/android/platform/android-ndk-r28c
+[INFO]:    Found NDK version 28c
+[WARNING]: Maximum recommended NDK version is 28c, but newer versions may work.
+[WARNING]: Newer NDKs may not be fully supported by p4a.
+[INFO]:    Getting NDK API version (i.e. minimum supported API) from user argument
+[DEBUG]:   All possible dists: [<Distribution: name radarpiok with recipes (hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, numpy, pyjnius, setuptools, android, pygame)>, <Distribution: name radarpi with recipes (hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, numpy, pyjnius, setuptools, android, pygame)>]
+[DEBUG]:   Dist matching name and arch: [<Distribution: name radarpi with recipes (hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, numpy, pyjnius, setuptools, android, pygame)>]
+[DEBUG]:   Dist matching ndk_api and recipe: [<Distribution: name radarpi with recipes (hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, numpy, pyjnius, setuptools, android, pygame)>]
+[INFO]:    Of the existing distributions, the following meet the given requirements:
+[INFO]:    	radarpi: min API 26, includes recipes (hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, numpy, pyjnius, setuptools, android, pygame), built for archs (arm64-v8a)
+[INFO]:    radarpi has compatible recipes, using this one
+[DEBUG]:   All possible dists: [<Distribution: name radarpiok with recipes (hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, numpy, pyjnius, setuptools, android, pygame)>, <Distribution: name radarpi with recipes (hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, numpy, pyjnius, setuptools, android, pygame)>]
+[DEBUG]:   Dist matching name and arch: [<Distribution: name radarpi with recipes (hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, numpy, pyjnius, setuptools, android, pygame)>]
+[DEBUG]:   Dist matching ndk_api and recipe: [<Distribution: name radarpi with recipes (hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, numpy, pyjnius, setuptools, android, pygame)>]
+[INFO]:    Of the existing distributions, the following meet the given requirements:
+[INFO]:    	radarpi: min API 26, includes recipes (hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, numpy, pyjnius, setuptools, android, pygame), built for archs (arm64-v8a)
+[INFO]:    radarpi has compatible recipes, using this one
+[INFO]:    -> directory context /workspace/radar-pi/android/.buildozer/android/platform/build-arm64-v8a/build/bootstrap_builds/sdl2
+[INFO]:    <- directory context /workspace/p4a-src
+[INFO]:    -> directory context /workspace/radar-pi/android/.buildozer/android/platform/build-arm64-v8a/dists/radarpi
+[DEBUG]:   Remove directory and subdirectory src/main/assets
+[DEBUG]:   Create directory src/main/assets
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/main.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/sitecustomize.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/compat/h3/__init__.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/compat/pyproj/__init__.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/compat/shapely/strtree.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/compat/shapely/geometry.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/compat/shapely/ops.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/compat/shapely/__init__.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/__init__.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/config.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/alerta/motor.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/alerta/__init__.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/telemetria/agregador.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/telemetria/__init__.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/ui/tela.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/ui/__init__.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa/gazetteer.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa/vinculo.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa/tiles.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa/__init__.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa/grafo.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/dados/db.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/dados/__init__.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/coletor/fontes.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/coletor/pipeline.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/coletor/util.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/coletor/base.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/coletor/__init__.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/sim/sintetico.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/sim/__init__.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/sim/rotas.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/sim/executor.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa_ui/navegador.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa_ui/app.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa_ui/render.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa_ui/cenarios.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa_ui/base.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa_ui/gps.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapa_ui/__init__.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapmatch/hmm.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/mapmatch/__init__.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/validacao/osm.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/validacao/status.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/validacao/uf.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/validacao/__init__.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/voz/tts.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/radar_pi/voz/__init__.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/android_rt/voz_android.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/android_rt/diag.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/android_rt/__init__.py'...
+Compiling '/workspace/radar-pi/android/.buildozer/android/app/android_rt/plataforma.py'...
+[DEBUG]:   Remove directory and subdirectory /tmp/p4a-extra-env-qn470eyp
+[DEBUG]:   Remove directory and subdirectory src/main/res
+[INFO]:    Detected highest available build tools version to be 37.0.0
+stty: 'standard input': Inappropriate ioctl for device
+[DEBUG]:   -> running gradlew clean assembleDebug
+[DEBUG]:   	> Task :clean
+[DEBUG]:   	> Task :preBuild UP-TO-DATE
+[DEBUG]:   	> Task :preDebugBuild UP-TO-DATE
+[DEBUG]:   	> Task :mergeDebugNativeDebugMetadata NO-SOURCE
+[DEBUG]:   	> Task :javaPreCompileDebug
+[DEBUG]:   	> Task :checkDebugAarMetadata
+[DEBUG]:   	> Task :generateDebugResValues
+[DEBUG]:   	> Task :mapDebugSourceSetPaths
+[DEBUG]:   	> Task :generateDebugResources
+[DEBUG]:   	> Task :mergeDebugResources
+[DEBUG]:   	> Task :packageDebugResources
+[DEBUG]:   	> Task :createDebugCompatibleScreenManifests
+[DEBUG]:   	> Task :extractDeepLinksDebug
+[DEBUG]:   	> Task :parseDebugLocalResources
+[DEBUG]:   	
+[DEBUG]:   	> Task :processDebugMainManifest
+[DEBUG]:   	/workspace/radar-pi/android/.buildozer/android/platform/build-arm64-v8a/dists/radarpi/src/main/AndroidManifest.xml:61:18-50 Warning:
+[DEBUG]:   		android:extractNativeLibs should not be specified in this source AndroidManifest.xml file. See https://d.android.com/guide/topics/manifest/application-element#extractNativeLibs for more information.
+[DEBUG]:   	The AGP Upgrade Assistant can remove the attribute from the AndroidManifest.xml file and update the build file accordingly. See https://d.android.com/studio/build/agp-upgrade-assistant for more information.
+[DEBUG]:   	/workspace/radar-pi/android/.buildozer/android/platform/build-arm64-v8a/dists/radarpi/src/main/AndroidManifest.xml:36:5-68 Warning:
+[DEBUG]:   		Element uses-permission#android.permission.WAKE_LOCK at AndroidManifest.xml:36:5-68 duplicated with element declared at AndroidManifest.xml:32:9-72
+[DEBUG]:   	
+[DEBUG]:   	> Task :processDebugManifest
+[DEBUG]:   	> Task :mergeDebugShaders
+[DEBUG]:   	> Task :compileDebugShaders NO-SOURCE
+[DEBUG]:   	> Task :generateDebugAssets UP-TO-DATE
+[DEBUG]:   	> Task :mergeDebugAssets
+[DEBUG]:   	> Task :processDebugJavaRes NO-SOURCE
+[DEBUG]:   	> Task :processDebugManifestForPackage
+[DEBUG]:   	> Task :mergeDebugJavaResource
+[DEBUG]:   	> Task :checkDebugDuplicateClasses
+[DEBUG]:   	> Task :desugarDebugFileDependencies
+[DEBUG]:   	> Task :mergeExtDexDebug
+[DEBUG]:   	> Task :mergeLibDexDebug
+[DEBUG]:   	> Task :mergeDebugJniLibFolders
+[DEBUG]:   	> Task :validateSigningDebug
+[DEBUG]:   	> Task :writeDebugAppMetadata
+[DEBUG]:   	> Task :writeDebugSigningConfigVersions
+[DEBUG]:   	> Task :processDebugResources
+[DEBUG]:   	> Task :mergeDebugNativeLibs
+[DEBUG]:   	
+[DEBUG]:   	> Task :compileDebugJavaWithJavac
+[DEBUG]:   	Java compiler version 21 has deprecated support for compiling with source/target version 8.
+[DEBUG]:   	Try one of the following options:
+[DEBUG]:   	    1. [Recommended] Use Java toolchain with a lower language version
+[DEBUG]:   	    2. Set a higher source/target version
+[DEBUG]:   	    3. Use a lower version of the JDK running the build (if you're not using Java toolchain)
+[DEBUG]:   	For more details on how to configure these settings, see https://developer.android.com/build/jdks.
+[DEBUG]:   	To suppress this warning, set android.javaCompile.suppressSourceTargetDeprecationWarning=true in gradle.properties.
+[DEBUG]:   	warning: [options] source value 8 is obsolete and will be removed in a future release
+[DEBUG]:   	warning: [options] target value 8 is obsolete and will be removed in a future release
+[DEBUG]:   	warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
+[DEBUG]:   	Note: Some input files use or override a deprecated API.
+[DEBUG]:   	Note: Recompile with -Xlint:deprecation for details.
+[DEBUG]:   	3 warnings
+[DEBUG]:   	
+[DEBUG]:   	> Task :dexBuilderDebug
+[DEBUG]:   	> Task :mergeProjectDexDebug
+[DEBUG]:   	> Task :stripDebugDebugSymbols
+[DEBUG]:   	> Task :compressDebugAssets
+[DEBUG]:   	> Task :packageDebug
+[DEBUG]:   	> Task :createDebugApkListingFileRedirect
+[DEBUG]:   	> Task :assembleDebug
+[DEBUG]:   	
+[DEBUG]:   	[Incubating] Problems report is available at: file:///workspace/radar-pi/android/.buildozer/android/platform/build-arm64-v8a/dists/radarpi/build/reports/problems/problems-report.html
+[DEBUG]:   	
+[DEBUG]:   	Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+[DEBUG]:   	
+[DEBUG]:   	You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+[DEBUG]:   	
+[DEBUG]:   	For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+[DEBUG]:   	
+[DEBUG]:   	BUILD SUCCESSFUL in 6s
+[DEBUG]:   	34 actionable tasks: 34 executed
+[INFO]:    <- directory context /workspace/p4a-src
+[DEBUG]:   All possible dists: [<Distribution: name radarpiok with recipes (hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, numpy, pyjnius, setuptools, android, pygame)>, <Distribution: name radarpi with recipes (hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, numpy, pyjnius, setuptools, android, pygame)>]
+[DEBUG]:   Dist matching name and arch: [<Distribution: name radarpi with recipes (hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, numpy, pyjnius, setuptools, android, pygame)>]
+[DEBUG]:   Dist matching ndk_api and recipe: [<Distribution: name radarpi with recipes (hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, numpy, pyjnius, setuptools, android, pygame)>]
+[INFO]:    Of the existing distributions, the following meet the given requirements:
+[INFO]:    	radarpi: min API 26, includes recipes (hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, numpy, pyjnius, setuptools, android, pygame), built for archs (arm64-v8a)
+[INFO]:    radarpi has compatible recipes, using this one
+[INFO]:    # Copying android package to current directory
+[INFO]:    # Android package filename not found in build output. Guessing...
+[INFO]:    # Found android package file: /workspace/radar-pi/android/.buildozer/android/platform/build-arm64-v8a/dists/radarpi/build/outputs/apk/debug/radarpi-debug.apk
+[INFO]:    # Add version number to android package
+[INFO]:    # Android package renamed to radarpi-debug-0.2.0.apk
+stty: 'standard input': Inappropriate ioctl for device
+[DEBUG]:   -> running cp /workspace/radar-pi/android/.buildozer/android/platform/build-arm64-v8a/dists/radarpi/build/outputs/apk/debug/radarpi-debug.apk radarpi-debug-0.2.0.apk
+No setup.py/pyproject.toml used, copying full private data into .apk.
+Applying Java source code patches...
+Applying patch: src/patches/SDLActivity.java.patch
+Warning: failed to apply patch (exit code 1), assuming it is already applied:  src/patches/SDLActivity.java.patch
+Applying patch: src/patches/SDLSurface.java.patch
+Warning: failed to apply patch (exit code 1), assuming it is already applied:  src/patches/SDLSurface.java.patch
+D Copy /workspace/radar-pi/android/.buildozer/android/platform/build-arm64-v8a/dists/radarpi/build/outputs/apk/debug/radarpi-debug.apk to /workspace/radar-pi/android/bin/radarpi-0.2.0-arm64-v8a-debug.apk
+I Android packaging done!
+I APK radarpi-0.2.0-arm64-v8a-debug.apk available in the bin directory

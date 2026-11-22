@@ -1,0 +1,132 @@
+{
+ "origem_osm": "geofabrik:brazil-latest.osm.pbf",
+ "radares_osm": 10165,
+ "base": 2332,
+ "coord_invalidas": 3,
+ "categorias": {
+  "confirmado_osm": 1034,
+  "proximo_osm": 185,
+  "so_base": 1110,
+  "so_osm": 8784
+ },
+ "limite_divergente": 31,
+ "limite_comparavel": 1082,
+ "por_uf": {
+  "SP": {
+   "confirmado_osm": 1034,
+   "proximo_osm": 185,
+   "so_base": 1106,
+   "so_osm": 1620
+  },
+  "MG": {
+   "so_base": 1,
+   "so_osm": 1261
+  },
+  "?": {
+   "so_base": 1,
+   "so_osm": 1
+  },
+  "PR": {
+   "so_base": 1,
+   "so_osm": 997
+  },
+  "SC": {
+   "so_base": 1,
+   "so_osm": 661
+  },
+  "RJ": {
+   "so_osm": 806
+  },
+  "DF": {
+   "so_osm": 275
+  },
+  "CE": {
+   "so_osm": 563
+  },
+  "ES": {
+   "so_osm": 163
+  },
+  "GO": {
+   "so_osm": 326
+  },
+  "RS": {
+   "so_osm": 643
+  },
+  "BA": {
+   "so_osm": 311
+  },
+  "PE": {
+   "so_osm": 276
+  },
+  "PB": {
+   "so_osm": 121
+  },
+  "TO": {
+   "so_osm": 33
+  },
+  "MA": {
+   "so_osm": 111
+  },
+  "MS": {
+   "so_osm": 100
+  },
+  "PA": {
+   "so_osm": 73
+  },
+  "SE": {
+   "so_osm": 113
+  },
+  "RO": {
+   "so_osm": 15
+  },
+  "MT": {
+   "so_osm": 125
+  },
+  "RR": {
+   "so_osm": 21
+  },
+  "RN": {
+   "so_osm": 73
+  },
+  "AL": {
+   "so_osm": 43
+  },
+  "PI": {
+   "so_osm": 42
+  },
+  "AM": {
+   "so_osm": 11
+  }
+ },
+ "saida": "resultados/osm/divergencias.csv",
+ "validacao_db": {
+  "status": {
+   "confirmado": 1741,
+   "nao_verificado": 536,
+   "conflito": 55
+  },
+  "categoria_osm": {
+   "confirmado_osm": 1034,
+   "so_base": 1110,
+   "proximo_osm": 185,
+   "coord_invalida": 3
+  },
+  "revisao_osm": 8784,
+  "radares_osm": 10165,
+  "origem_osm": "geofabrik:brazil-latest.osm.pbf",
+  "radares_avaliados": 2332,
+  "n_fontes": {
+   "2": 1385,
+   "1": 541,
+   "3": 322,
+   "4": 84
+  },
+  "limite_divergente_osm": 20,
+  "limite_divergente_fontes": 4,
+  "inativo_em_outra_fonte": 32
+ }
+}
+
+real	0m14.189s
+user	1m24.935s
+sys	0m3.540s

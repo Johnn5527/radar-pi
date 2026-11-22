@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="53" time="294.046" timestamp="2026-11-22T12:54:43.639256-03:00" hostname="grok-bot-vm-370594616"><testcase classname="tests.test_cenarios_sinteticos" name="test_rua_paralela_avisa_so_a" time="0.019" /><testcase classname="tests.test_cenarios_sinteticos" name="test_contramao_nao_avisa" time="0.034" /><testcase classname="tests.test_cenarios_sinteticos" name="test_marginal_colada_15m" time="0.159" /><testcase classname="tests.test_cenarios_sinteticos" name="test_curva_distancia_ao_longo_da_via" time="0.052" /><testcase classname="tests.test_cenarios_sinteticos" name="test_troca_de_rua" time="0.034" /><testcase classname="tests.test_cenarios_sinteticos" name="test_passou_do_radar_para_alerta" time="0.020" /><testcase classname="tests.test_cenarios_sinteticos" name="test_gps_ruidoso_15m" time="0.288" /><testcase classname="tests.test_cenarios_sinteticos" name="test_tunel_perda_de_sinal" time="0.016" /><testcase classname="tests.test_cenarios_sinteticos" name="test_velocidade_acima_abaixo" time="0.023" /><testcase classname="tests.test_cenarios_sinteticos" name="test_limite_composto_90_60" time="0.022" /><testcase classname="tests.test_cenarios_sinteticos" name="test_limite_composto_pesado_e11" time="0.011" /><testcase classname="tests.test_cenarios_sinteticos" name="test_radar_desativado_nao_avisa" time="0.014" /><testcase classname="tests.test_cenarios_sinteticos" name="test_radar_sem_limite_exibicao" time="0.027" /><testcase classname="tests.test_correcoes_v2" name="test_e2_gazetteer_destinos" time="0.003" /><testcase classname="tests.test_correcoes_v2" name="test_e2_abreviacoes_e_rumo_espelho" time="0.000" /><testcase classname="tests.test_correcoes_v2" name="test_e2_indefinido_baixa_confianca_e_placa" time="0.031" /><testcase classname="tests.test_correcoes_v2" name="test_e2_mao_unica_resolve_sentido" time="0.001" /><testcase classname="tests.test_correcoes_v2" name="test_e3_dead_reckoning_distancia_no_tunel" time="0.013" /><testcase classname="tests.test_correcoes_v2" name="test_e5_histerese_parado_no_limiar" time="0.130" /><testcase classname="tests.test_correcoes_v2" name="test_e5_voz_uma_vez_por_radar" time="0.020" /><testcase classname="tests.test_correcoes_v2" name="test_e6_via_muda_de_nome_em_linha_reta" time="0.014" /><testcase classname="tests.test_correcoes_v2" name="test_e8_interpolacao_rejeita_marcos_incoerentes" time="0.000" /><testcase classname="tests.test_correcoes_v2" name="test_e10_dedup_mesma_fonte" time="0.000" /><testcase classname="tests.test_correcoes_v2" name="test_e7_coletor_tenta_de_novo" time="0.001" /><testcase classname="tests.test_correcoes_v2" name="test_e1_cobertura_limite_por_origem" time="0.002" /><testcase classname="tests.test_correcoes_v2" name="test_n2_voz_nao_bloqueia" time="0.012" /><testcase classname="tests.test_correcoes_v2" name="test_n1_n9_icones_sentido_e_agrupamento" time="0.019" /><testcase classname="tests.test_correcoes_v2" name="test_n3_auto_zoom_radar_cabe_na_tela[tela0]" time="0.001" /><testcase classname="tests.test_correcoes_v2" name="test_n3_auto_zoom_radar_cabe_na_tela[tela1]" time="0.001" /><testcase classname="tests.test_correcoes_v2" name="test_n7_velocidade_vermelha_pelo_osm" time="0.002" /><testcase classname="tests.test_correcoes_v2" name="test_n5_tamoios_malha_completa" time="0.054" /><testcase classname="tests.test_correcoes_v2" name="test_n10_memoria_tiles" time="2.136" /><testcase classname="tests.test_dados_reais" name="test_cobertura_dados" time="0.005"><failure message="AssertionError: só 86.7% dos radares ativos têm limite oficial&#10;assert 86.7 &gt;= 95">con_real = &lt;sqlite3.Connection object at 0x7f4285367a60&gt;
+registrar = &lt;function registrar.&lt;locals&gt;._r at 0x7f427b1109a0&gt;
+
+    def test_cobertura_dados(con_real, registrar):
+        c = con_real
+        por_fonte = [dict(r) for r in c.execute("""SELECT fonte, count(*) total, sum(status='ativo') ativos,
+            sum(status='ativo' AND limite_kmh IS NOT NULL) ativos_com_limite, sum(lat IS NOT NULL) com_coord,
+            sum(coord_origem='interpolado_km') coord_interpolada, sum(duplicata_de IS NOT NULL) duplicatas
+            FROM radares GROUP BY fonte""")]
+        fontes = [dict(r) for r in c.execute("SELECT fonte,status_coleta,registros,erro,data_coleta FROM fontes")]
+        pares = [dict(r) for r in c.execute("""SELECT a.fonte de, b.fonte para, count(*) n FROM radares a
+            JOIN radares b ON a.duplicata_de=b.id GROUP BY 1,2""")]
+        tot = c.execute("SELECT sum(status='ativo' AND duplicata_de IS NULL), sum(status='ativo' AND duplicata_de IS NULL AND limite_kmh IS NOT NULL), sum(lat IS NOT NULL), count(*) FROM radares").fetchone()
+        pct_lim = round(100 * tot[1] / tot[0], 1)
+        registrar(cenario="cobertura", por_fonte=por_fonte, coletas=fontes, duplicatas=pares,
+                  ativos_unicos=tot[0], pct_ativos_com_limite=pct_lim, pct_com_coord=round(100 * tot[2] / tot[3], 1))
+        falhas = [f["fonte"] for f in fontes if f["status_coleta"] != "ok"]
+&gt;       assert pct_lim &gt;= 95, f"só {pct_lim}% dos radares ativos têm limite oficial"
+E       AssertionError: só 86.7% dos radares ativos têm limite oficial
+E       assert 86.7 &gt;= 95
+
+tests/test_dados_reais.py:40: AssertionError</failure></testcase><testcase classname="tests.test_dados_reais" name="test_vinculo_cet_sentido" time="0.174" /><testcase classname="tests.test_dados_reais" name="test_cet_real_recall_e_distancia" time="108.508"><failure message="AssertionError: 1 radares com aviso piscando/fragmentado&#10;assert not [{'id': 'cet_sp:7114/7115#2025-06-13', 's_radar': 1105, 'eps_alvo': [{'id': 'cet_sp:7114/7115#2025-06-13', 't_ini': 21...d_ini': 295.1, 'n': 4, ...}, {'id': 'cet_sp:7114/7115#2025-06-13', 't_ini': 30.0, 'd_ini': 220.1, 'n': 17, ...}], ...}]">recall_cet = ([{'id': 'cet_sp:5425#2025-08-29', 's_radar': 1041, 'eps_alvo': [{'id': 'cet_sp:5425#2025-08-29', 't_ini': 15.0, 'd_in....}], 'eps_exato': [{'id': 'cet_sp:5307/5308#2023-12-21', 't_ini': 13.0, 'd_ini': 447.3, 'n': 33, ...}], ...}, ...], 31)
+registrar = &lt;function registrar.&lt;locals&gt;._r at 0x7f42791d04a0&gt;
+
+    def test_cet_real_recall_e_distancia(recall_cet, registrar):
+        out, curtas = recall_cet
+        det = [r for r in out if r["eps_alvo"]]
+        bom = [r for r in det if r["dist_real_1o"] &gt;= 400]
+        erros = [abs(r["erro_dist"]) for r in det]
+        frag = [r for r in det if len(r["eps_alvo"]) &gt; 1]
+        apos = [r for r in det if r["alerta_apos_passar"]]
+        registrar(cenario="recall_cet_real", simulados=len(out), rotas_curtas_descartadas=curtas,
+                  detectados=len(det), pct_detectado=round(100 * len(det) / len(out), 1),
+                  pct_aviso_com_400m_ou_mais=round(100 * len(bom) / len(out), 1),
+                  erro_dist_mediana_m=round(st.median(erros), 1) if erros else None,
+                  erro_dist_p95_m=round(sorted(erros)[int(0.95 * len(erros)) - 1], 1) if erros else None,
+                  alerta_fragmentado=len(frag), alerta_apos_passar=len(apos),
+                  nao_detectados=[{"id": r["id"], "metodo": r["metodo"]} for r in out if not r["eps_alvo"]][:15])
+        assert len(det) / len(out) &gt;= 0.95, f"detectou {len(det)}/{len(out)}"
+        assert len(bom) / len(out) &gt;= 0.90, f"aviso com &gt;=400 m em {len(bom)}/{len(out)}"
+&gt;       assert not frag, f"{len(frag)} radares com aviso piscando/fragmentado"
+E       AssertionError: 1 radares com aviso piscando/fragmentado
+E       assert not [{'id': 'cet_sp:7114/7115#2025-06-13', 's_radar': 1105, 'eps_alvo': [{'id': 'cet_sp:7114/7115#2025-06-13', 't_ini': 21...d_ini': 295.1, 'n': 4, ...}, {'id': 'cet_sp:7114/7115#2025-06-13', 't_ini': 30.0, 'd_ini': 220.1, 'n': 17, ...}], ...}]
+
+tests/test_dados_reais.py:142: AssertionError</failure></testcase><testcase classname="tests.test_dados_reais" name="test_cet_real_falsos_alertas" time="0.000" /><testcase classname="tests.test_dados_reais" name="test_contramao_real_cet" time="68.233" /><testcase classname="tests.test_dados_reais" name="test_marginal_real_expressa_vs_local" time="8.856" /><testcase classname="tests.test_dados_reais" name="test_desativado_real" time="17.168" /><testcase classname="tests.test_dados_reais" name="test_tamoios_sp099" time="0.454" /><testcase classname="tests.test_dados_reais" name="test_geocodificacao_rodovia_km_leave_one_out" time="0.005" /><testcase classname="tests.test_desempenho" name="test_desempenho_sp" time="49.711"><failure message="AssertionError: pior ciclo estimado no Pi 4 passa de 1 s (perde um fix de GPS)&#10;assert (274.6807789999366 * 5.0) &lt; 1000">registrar = &lt;function registrar.&lt;locals&gt;._r at 0x7f4279afbb00&gt;
+
+    def test_desempenho_sp(registrar):
+        proc = psutil.Process()
+        rss0 = proc.memory_info().rss
+        t = time.time()
+        from radar_pi.mapa.tiles import MalhaTiles
+        m = MalhaTiles(ROOT / "data/osm/malha_sp.sqlite", "sp")   # N10: tiles sob demanda
+        t_load = time.time() - t
+        gc.collect()
+        gc.freeze()   # E9: objetos de longa duração fora da coleta de lixo (o app faz o mesmo)
+        rss_malha = proc.memory_info().rss - rss0
+        con = db.conectar(ROOT / "data/radares.sqlite")
+        vinc = [tuple(r) for r in con.execute(
+            "SELECT v.u,v.v,v.k,v.offset_m FROM vinculos v JOIN radares r ON r.id=v.radar_id WHERE v.grafo='sp' AND r.status='ativo' AND r.municipio='SAO PAULO'")]
+        random.Random(1).shuffle(vinc)
+        ms, n_rotas = [], 0
+        t_total = time.time()
+        for n, (u, v, k, off) in enumerate(vinc[:60]):
+            i = m.idx_of.get((u, v, k))
+            if i is None:
+                continue
+            ar, s = caminho_ate_radar(m, i, off, 1500, 500)
+            fx, _ = gerar(m, ar, vel_kmh=random.Random(n).choice([30, 50, 70]), seed=n)
+            q, _, _ = rodar(m, con, fx)
+            ms += [x.ms for x in q]
+            n_rotas += 1
+        ms.sort()
+        p50, p95, p99, mx = st.median(ms), ms[int(.95 * len(ms))], ms[int(.99 * len(ms))], ms[-1]
+        tam = {"radares.sqlite_MB": round(os.path.getsize(ROOT / "data/radares.sqlite") / 1e6, 2),
+               "sp_city.graphml_MB": round(os.path.getsize(ROOT / "data/osm/sp_city.graphml") / 1e6, 1),
+               "malha_sp.sqlite_MB": round(os.path.getsize(ROOT / "data/osm/malha_sp.sqlite") / 1e6, 1)}
+        registrar(cenario="desempenho", ciclos=len(ms), rotas=n_rotas, ms_p50=round(p50, 2), ms_p95=round(p95, 2),
+                  ms_p99=round(p99, 2), ms_max=round(mx, 1), carga_malha_s=round(t_load, 1),
+                  rss_malha_MB=round(rss_malha / 1e6), rss_total_MB=round(proc.memory_info().rss / 1e6),
+                  tamanhos=tam, arestas_carregadas_fim=len(m.edges), cargas_tiles=m.cargas, pi4_p95_estimado_ms=[round(p95 * f, 1) for f in FATOR_PI4],
+                  pi4_max_estimado_ms=[round(mx * f) for f in FATOR_PI4], seg_total=round(time.time() - t_total, 1))
+        assert p95 * FATOR_PI4[1] &lt; 200, "ciclo p95 estimado no Pi 4 acima de 200 ms"
+&gt;       assert mx * FATOR_PI4[1] &lt; 1000, "pior ciclo estimado no Pi 4 passa de 1 s (perde um fix de GPS)"
+E       AssertionError: pior ciclo estimado no Pi 4 passa de 1 s (perde um fix de GPS)
+E       assert (274.6807789999366 * 5.0) &lt; 1000
+
+tests/test_desempenho.py:54: AssertionError</failure></testcase><testcase classname="tests.test_mapa_ui" name="test_gpsd_tpv" time="0.045" /><testcase classname="tests.test_mapa_ui" name="test_app_headless_cenarios" time="13.209" /><testcase classname="tests.test_unidades" name="test_parse_limite" time="0.000" /><testcase classname="tests.test_unidades" name="test_cet_sentido_e_via" time="0.000" /><testcase classname="tests.test_unidades" name="test_cet_sentido_abreviado_c_b" time="0.000" /><testcase classname="tests.test_unidades" name="test_rodovia_km" time="0.000" /><testcase classname="tests.test_unidades" name="test_coletor_falha_mantem_versao_anterior" time="12.116" /><testcase classname="tests.test_unidades" name="test_coletor_falha_sem_versao" time="12.094" /><testcase classname="tests.test_unidades" name="test_coletor_rejeita_html_de_bloqueio" time="0.001" /><testcase classname="tests.test_unidades" name="test_h3_consulta_vizinhanca" time="0.001" /><testcase classname="tests.test_unidades" name="test_voz_espeak" time="0.015" /></testsuite></testsuites>

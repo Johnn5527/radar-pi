@@ -1,0 +1,17 @@
+h3==4.5.1
+networkx==3.7
+numpy==2.5.5
+openpyxl==3.1.5
+osmnx==2.2.0
+pandas==3.1.1
+pillow==13.0.0
+psutil==7.2.2
+pyproj==3.8.0
+pytest==9.2.0
+requests==2.34.2
+scipy==1.18.1
+shapely==2.2.0
+imageio-ffmpeg==0.8.1
+pygame==2.6.1
+piper-tts==1.8.0
+osmium==4.3.2   # opcional: leitura do extrato Geofabrik (.osm.pbf) em scripts/cruzar_osm.py

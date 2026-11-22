@@ -1,0 +1,23 @@
+  overpass: https://overpass-api.de/api/interpreter #1: URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)>
+  overpass: https://overpass-api.de/api/interpreter #2: URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)>
+  overpass: https://overpass.kumi.systems/api/interpreter #1: TimeoutError: The read operation timed out
+  overpass: https://overpass.kumi.systems/api/interpreter #2: HTTPError: HTTP Error 502: Bad Gateway
+  overpass: https://maps.mail.ru/osm/tools/overpass/api/interpreter #1: HTTPError: HTTP Error 504: Gateway Time-out
+  overpass: https://maps.mail.ru/osm/tools/overpass/api/interpreter #2: HTTPError: HTTP Error 504: Gateway Time-out
+Traceback (most recent call last):
+  File "/workspace/radar-pi/scripts/cruzar_osm.py", line 108, in <module>
+    "por_uf": {k: dict(v) for k, v in por_uf.items()}, "saida": str(a.saida)}
+    ^^^^^
+  File "/workspace/radar-pi/scripts/cruzar_osm.py", line 88, in main
+    print(f"{exportar_db(a.base)} radares exportados -> {a.base}")
+              ^^^^^^^^^^^^
+  File "/workspace/radar-pi/scripts/cruzar_osm.py", line 67, in obter_osm
+    cache = Path(a.cache) / f"overpass_{(a.bbox or area).replace(',', '_')}.json"
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/radar-pi/radar_pi/validacao/osm.py", line 105, in baixar_overpass
+    raise ConnectionError("Overpass indisponível: " + " | ".join(erros))
+ConnectionError: Overpass indisponível: https://overpass-api.de/api/interpreter #1: URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)> | https://overpass-api.de/api/interpreter #2: URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)> | https://overpass.kumi.systems/api/interpreter #1: TimeoutError: The read operation timed out | https://overpass.kumi.systems/api/interpreter #2: HTTPError: HTTP Error 502: Bad Gateway | https://maps.mail.ru/osm/tools/overpass/api/interpreter #1: HTTPError: HTTP Error 504: Gateway Time-out | https://maps.mail.ru/osm/tools/overpass/api/interpreter #2: HTTPError: HTTP Error 504: Gateway Time-out
+
+real	5m57.996s
+user	0m0.087s
+sys	0m0.045s

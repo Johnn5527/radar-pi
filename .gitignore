@@ -1,0 +1,26 @@
+# ambiente
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+!.env.example
+# build android
+android/.buildozer/
+android/bin/
+android/app/data/
+*.apk
+android/.gofile_*.json
+# dados grandes / gerados (regeráveis pelos scripts)
+data/osm/
+data/vozes/
+data/voz_cache/
+data/*.sqlite
+*.sqlite
+*.pkl
+*.graphml
+*.pbf
+*.onnx
+logs/
+resultados/v1/
+*.mp4
