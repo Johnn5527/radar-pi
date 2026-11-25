@@ -1,4 +1,49 @@
-# radar-pi — avisador de radares (Raspberry Pi 4) · protótipo SP
+<div align="center">
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&height=200&color=0:050505,50:6d28d9,100:a855f7&text=RADAR-PI&fontSize=60&fontColor=ffffff&animation=fadeIn&fontAlignY=35"/>
+
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=20&duration=2500&pause=800&color=C084FC&center=true&vCenter=true&width=700&lines=RADAR+%C3%80+FRENTE+EM+450+M;MESMA+VIA%2C+MESMO+SENTIDO;100%25+OFFLINE+NO+RASPBERRY+PI"/>
+
+<img src="https://img.shields.io/badge/Python-8A2BE2?style=for-the-badge&logo=python&logoColor=white"/>
+<img src="https://img.shields.io/badge/Raspberry_Pi-6d28d9?style=for-the-badge&logo=raspberrypi&logoColor=white"/>
+<img src="https://img.shields.io/badge/Android-a855f7?style=for-the-badge&logo=android&logoColor=white"/>
+<img src="https://img.shields.io/badge/SQLite-8A2BE2?style=for-the-badge&logo=sqlite&logoColor=white"/>
+<img src="https://img.shields.io/badge/OpenStreetMap-6d28d9?style=for-the-badge&logo=openstreetmap&logoColor=white"/>
+
+</div>
+
+---
+
+## 📡 Sobre
+
+Avisador de radares que roda **offline** em um Raspberry Pi 4 (e em Android). Ele avisa só o radar que está **à frente, na mesma via e no mesmo sentido**, mostra o limite e a sua velocidade e fala "radar, 60" em português.
+
+```bash
+╭────────────────────────────────╮
+│         RADAR-PI v2.0          │
+╰────────────────────────────────╯
+
+✔ Dados oficiais (CET, DER-SP, ARTESP, DNIT, Inmetro...)
+✔ Map matching HMM (Newson & Krumm)
+✔ Alerta a 450 m medidos ao longo da via
+✔ Mapa em tempo real (pygame/SDL)
+✔ Voz Piper TTS pt-BR com fallback espeak-ng
+✔ Telemetria local só com agregados (LGPD)
+
+STATUS: ONLINE 🚀
+```
+
+| 🧩 Destaque | 💡 Como |
+|---|---|
+| 🗺️ Mapa offline | Malha OSM em tiles H3 no SQLite, carregada sob demanda |
+| 🧭 Mesma via e sentido | Grafo dirigido em metros (UTM 23S) e vínculo radar → trecho |
+| 📍 GPS ruidoso | Map matching HMM online, testado com ruído de 5–15 m e túnel |
+| 🔊 Voz | Frases comuns pré-geradas em cache, tocam sem síntese |
+| 📱 Android | Build com Buildozer, mesma base de código |
+
+---
+
+## 📖 Documentação técnica
 
 Avisa radar **à frente, na mesma via e no mesmo sentido**, a 450 m medidos **ao longo da via**,
 mostra limite e velocidade (vermelho se acima) e fala "radar, 60". Tudo offline no Pi.
@@ -69,3 +114,13 @@ Vídeos com Piper: `resultados/video_piper_{paulista,radial_leste,tamoios}.mp4`.
   - Só analisa pontos com 5 ou mais passagens (k-anonimato).
   - Gera `candidato` (ponto onde o pessoal desacelera mas não há radar) e `suspeito` (radar ativo onde ninguém desacelera) na tabela `telemetria_sinais`, só para revisão.
 - Passo futuro (não implementado): conferir os pontos em `conflito`/`revisao_osm` com imagens do Mapillary (placa ou equipamento).
+
+---
+
+<div align="center">
+
+Feito com 💜 por **[Johnny Lucas](https://github.com/Johnn5527)**
+
+</div>
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&height=120&section=footer&color=0:050505,50:6d28d9,100:a855f7"/>
