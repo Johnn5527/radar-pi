@@ -119,7 +119,7 @@ Vídeos com Piper: `resultados/video_piper_{paulista,radial_leste,tamoios}.mp4`.
 
 <div align="center">
 
-Feito com 💜 por **[Johnny Lucas](https://github.com/Johnn5527)**
+Feito com por **[Johnny Lucas](https://github.com/Johnn5527)**
 
 </div>
 
